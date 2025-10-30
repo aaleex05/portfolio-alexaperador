@@ -1,0 +1,62 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+import HomeIcon from "../icons/HomeIcon.astro";
+import SkillsIcon from "../icons/SkillsIcon.astro";
+import StudiesIcon from "../icons/StudiesIcon.astro";
+import ProjectsIcon from "../icons/ProjectsIcon.astro";
+import ContactIcon from "../icons/ContactIcon.astro";
+
+const navItems = [
+    {
+        title: "Home",
+        url: "/",
+        icon: HomeIcon,
+    },
+    {
+        title: "Skills",
+        url: "/#skills",
+        icon: SkillsIcon,
+    },
+    {
+        title: "Studies",
+        url: "/#studies",
+        icon: StudiesIcon,
+    },
+    {
+        title: "Projects",
+        url: "/#projects",
+        icon: ProjectsIcon,
+    },
+    {
+        title: "Contact",
+        url: "mailto:alexapsa2007@gmail.com",
+        icon: ContactIcon,
+    },
+];
+---
+
+<header
+    class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-4"
+>
+    <div class="flex gap-5">
+        <nav
+            class="flex px-3 text-sm font-medium rounded-full dark:bg-[#F0F0F0] dark:text-[#141414] text-gray-200 bg-[#252525] justify-center items-center"
+        >
+            {
+                navItems.map((link) => {
+                    const Icon = link.icon;
+                    return (
+                        <a
+                            class="relative flex gap-2 items-center text-sm px-2 py-2 transition hover:text-red-800"
+                            href={link.url}
+                        >
+                            <Icon class="w-4 h-4 drop-shadow-sm dark:drop-shadow-black/90 drop-shadow-white/50" />
+                            {link.title}
+                        </a>
+                    );
+                })
+            }
+        </nav>
+        <ThemeToggle />
+    </div>
+</header>

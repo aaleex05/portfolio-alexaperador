@@ -1,0 +1,54 @@
+---
+import MoonIcon from "../icons/MoonIcon.astro";
+import SunIcon from "../icons/SunIcon.astro";
+---
+
+<button
+	id="toggle-theme"
+	class="flex items-center text-[#252525] bg-[#252525] rounded-full dark:bg-[#F0F0F0] p-2 text-sm font-medium cursor-pointer"
+>
+	<span id="moon-icon" class="hidden rounded-full text-sm dark:block text-gray-800">
+		<MoonIcon />
+	</span>
+	<span id="sun-icon" class="rounded-full text-sm dark:hidden text-white">
+		<SunIcon />
+	</span>
+</button>
+
+<script>
+	const themeToggle = document.getElementById("toggle-theme");
+	const htmlElement = document.documentElement;
+	const moonIcon = document.getElementById("moon-icon");
+	const sunIcon = document.getElementById("sun-icon");
+
+	if (localStorage.getItem("theme") === "dark") {
+		htmlElement.classList.add("dark");
+	}
+
+	function updateButton() {
+		if (!themeToggle || !moonIcon || !sunIcon) return;
+
+		const isDark = htmlElement.classList.contains("dark");
+
+		if (isDark) {
+			moonIcon.classList.remove("hidden");
+			sunIcon.classList.add("hidden");
+		} else {
+			moonIcon.classList.add("hidden");
+			sunIcon.classList.remove("hidden");
+		}
+	}
+
+	updateButton();
+
+	if (themeToggle) {
+		themeToggle.addEventListener("click", () => {
+			htmlElement.classList.toggle("dark");
+			const newTheme = htmlElement.classList.contains("dark")
+				? "dark"
+				: "light";
+			localStorage.setItem("theme", newTheme);
+			updateButton();
+		});
+	}
+</script>

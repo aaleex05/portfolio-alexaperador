@@ -13,11 +13,6 @@ const navItems = [
         icon: HomeIcon,
     },
     {
-        title: "Skills",
-        url: "/#skills",
-        icon: SkillsIcon,
-    },
-    {
         title: "Studies",
         url: "/#studies",
         icon: StudiesIcon,
@@ -40,14 +35,15 @@ const navItems = [
 >
     <div class="flex gap-5">
         <nav
-            class="flex px-3 text-sm font-medium rounded-full dark:bg-[#F0F0F0] dark:text-[#141414] text-gray-200 bg-[#252525] justify-center items-center"
+            class="flex px-3 text-sm font-medium rounded-full bg-linear-to-tl dark:from-slate-400 dark:via-gray-300 dark:to-gray-400
+     from-neutral-700 to-neutral-900 dark:text-[#141414] text-gray-200 justify-center items-center"
         >
             {
                 navItems.map((link) => {
                     const Icon = link.icon;
                     return (
                         <a
-                            class="relative flex gap-2 items-center text-sm px-2 py-2 transition hover:text-red-800"
+                            class="relative flex gap-2 items-center text-sm px-2 py-2 transition hover:text-[#ff5d01] duration-300"
                             href={link.url}
                         >
                             <Icon class="w-4 h-4 drop-shadow-sm dark:drop-shadow-black/90 drop-shadow-white/50" />

@@ -8,6 +8,26 @@ body {
 }
 
 html.dark body {
-     background: radial-gradient(125% 125% at 50% 90%, #fff 40%, #475569 100%);
+    background: radial-gradient(125% 125% at 50% 90%, #141414 40%, #323233 100%);
     background-attachment: fixed;
+}
+
+html.dark .gradient-text {
+    background: linear-gradient(to top left,
+            rgb(148, 163, 184),
+            rgb(209, 213, 219),
+            rgb(156, 163, 175));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.gradient-text {
+    background: linear-gradient(to top left,
+            #404040,
+            #171717
+        );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }

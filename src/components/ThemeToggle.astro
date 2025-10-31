@@ -5,13 +5,26 @@ import SunIcon from "../icons/SunIcon.astro";
 
 <button
 	id="toggle-theme"
-	class="flex items-center text-[#252525] bg-[#252525] rounded-full dark:bg-[#F0F0F0] p-2 text-sm font-medium cursor-pointer"
+	class="flex items-center text-[#252525] rounded-full p-2 text-sm font-medium cursor-pointer dark:bg-linear-to-tl dark:from-slate-400 dark:via-gray-300 dark:to-gray-400
+    bg-linear-to-tl from-neutral-700 via-neutral-350 to-neutral-900"
 >
-	<span id="moon-icon" class="hidden rounded-full text-sm dark:block text-gray-800">
-		<MoonIcon />
+	<span
+		id="moon-icon"
+		class="rounded-full text-sm text-[#141414] flex items-center justify-center hover:text-[#387cb4] hover:scale-105 duration-300"
+	>
+		<MoonIcon class="w-6 h-6" />
+		<MoonIcon
+			class="absolute w-7 h-7 z-10 scale-105 blur-xs animate-pulse"
+		/>
 	</span>
-	<span id="sun-icon" class="rounded-full text-sm dark:hidden text-white">
-		<SunIcon />
+	<span
+		id="sun-icon"
+		class="rounded-full text-sm dark:hidden text-white flex items-center justify-center hover:text-yellow-300 hover:scale-105 duration-300"
+	>
+		<SunIcon class="w-6 h-6" />
+		<SunIcon
+			class="absolute w-7 h-7 z-10 scale-105 blur-xs animate-pulse"
+		/>
 	</span>
 </button>
 

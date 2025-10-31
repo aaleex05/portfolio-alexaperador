@@ -1,0 +1,15 @@
+---
+const text: string = Astro.props.text;
+const Icon: any = Astro.props.icon;
+const className: string = Astro.props.className || "";
+---
+
+<span
+    class={`bg-linear-to-tl dark:from-slate-400 dark:via-gray-300 dark:to-gray-400
+     from-neutral-700 to-neutral-900 dark:text-[#141414] text-xl text-gray-200 px-9 py-1.5 rounded-full flex items-center font-medium ${className}`}
+>
+    <Icon
+        class="w-6 h-5 inline-block mr-2 drop-shadow-sm dark:drop-shadow-black/90 drop-shadow-white/50"
+    />
+    {text}
+</span>

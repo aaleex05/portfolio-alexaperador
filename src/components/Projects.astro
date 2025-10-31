@@ -1,0 +1,111 @@
+---
+import GitHubIcon from "../icons/GitHubIcon.astro";
+import LinkedInIcon from "../icons/LinkedInIcon.astro";
+import ProjectsIcon from "../icons/ProjectsIcon.astro";
+import AstroIcon from "../icons/skills/AstroIcon.astro";
+import NextJsIcon from "../icons/skills/NextjsIcon.astro";
+import SupabaseIcon from "../icons/skills/SupabaseIcon.astro";
+import TailwindCSSIcon from "../icons/skills/TailwindIcon.astro";
+import Badge from "./Badge.astro";
+import LinkIcon from "../icons/LinkIcon.astro";
+
+const tags = {
+    Astro: {
+        name: "Astro",
+        class: "bg-[#3e257a] text-white inset-shadow-sm inset-shadow-purple-500/70",
+        icon: AstroIcon,
+    },
+    NextJs: {
+        name: "Next.js",
+        class: "bg-[#000000] text-white inset-shadow-sm inset-shadow-black/70",
+        icon: NextJsIcon,
+    },
+    Supabase: {
+        name: "Supabase",
+        class: "bg-[#3ECF8E] text-white inset-shadow-sm inset-shadow-green-500/70",
+        icon: SupabaseIcon,
+    },
+    TailwindCSS: {
+        name: "Tailwind CSS",
+        class: "bg-[#06B6D4] text-white inset-shadow-sm inset-shadow-cyan-500/70",
+        icon: TailwindCSSIcon,
+    },
+};
+
+const projects = [
+    {
+        title: "Notly",
+        description:
+            "A note-taking web application that allows users to create, edit, and organize their notes efficiently.",
+        link: "https://notly-app.web.app/",
+        github: "https://github.com/aaleex05/notly",
+        image: "/public/projects/notly.webp",
+        tags: [tags.NextJs, tags.Supabase, tags.TailwindCSS],
+    },
+];
+---
+
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-8 flex flex-col" id="projects">
+    <div class="flex items-center justify-center mb-5">
+        <Badge text="Projects" icon={ProjectsIcon} />
+        <Badge
+            text="Projects"
+            className="absolute blur-xs -z-1 animate-pulse"
+            icon={ProjectsIcon}
+        />
+    </div>
+    {
+    projects.map(({ title, description, tags, image, link, github }) => (
+        <article
+            class="w-full mx-auto lg:w-[850px] p-10 rounded-2xl border-b bg-black/20 dark:bg-black/10 border border-black/10 dark:border-white/10 
+                    shadow-xl"
+        >
+            <h3 class="lg:text-3xl text-2xl font-semibold gradient-text mb-2">
+                {title}
+            </h3>
+            <p class="lg:text-lg gradient-text text-lm mb-4 text-pretty">
+                {description}
+            </p>
+            <ul class="flex gap-x-2 flex-row pb-4">
+                {tags.map((tag) => (
+                    <li>
+                        <span
+                            class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-4`}
+                        >
+                            <tag.icon class="size-4" />
+                            {tag.name}
+                        </span>
+                    </li>
+                ))}
+            </ul>
+            <img
+                class="rounded shadow-2xl shadow-white/10"
+                src={image}
+                alt={title}
+            />
+            <div class="inline-flex gap-x-4 pt-4">
+                <a
+                    href={link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="dark:bg-gray-200 bg-[#141414] duration-500 hover:scale-105 dark:text-[#141414] text-gray-200 py-2 px-4
+                    rounded-full font-medium flex items-center gap-2 hover:dark:bg-white hover:bg-[#3b3b3b] cursor-pointer"
+                >
+                    <LinkIcon />
+                    Preview
+                </a>
+                <a
+                    href={github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="dark:bg-gray-200 bg-[#141414] duration-500 hover:scale-105 dark:text-[#141414] text-gray-200 py-2 px-4
+                    rounded-full font-medium flex items-center gap-2 hover:dark:bg-white hover:bg-[#3b3b3b] cursor-pointer"
+                >
+                    <GitHubIcon />
+                    GitHub
+                </a>
+            </div>
+        </article>
+    ))
+}
+</div>

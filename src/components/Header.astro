@@ -5,6 +5,8 @@ import SkillsIcon from "../icons/SkillsIcon.astro";
 import StudiesIcon from "../icons/StudiesIcon.astro";
 import ProjectsIcon from "../icons/ProjectsIcon.astro";
 import ContactIcon from "../icons/ContactIcon.astro";
+import MenuIcon from "../icons/MenuIcon.astro";
+import XIcon from "../icons/XIcon.astro";
 
 const navItems = [
     {
@@ -31,12 +33,11 @@ const navItems = [
 ---
 
 <header
-    class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-4"
+    class="fixed top-0 z-10 flex items-center justify-between gap-5 md:justify-center px-5 w-full mx-auto mt-4"
 >
-    <div class="flex gap-5">
+    <div class="flex gap-5 justify-center">
         <nav
-            class="flex px-3 text-sm font-medium rounded-full bg-linear-to-tl dark:from-slate-400 dark:via-gray-300 dark:to-gray-400
-     from-neutral-700 to-neutral-900 dark:text-[#141414] text-gray-200 justify-center items-center"
+            class="hidden md:flex px-3 text-sm font-medium rounded-full bg-linear-to-tl dark:from-slate-400 dark:via-gray-300 dark:to-gray-400 from-neutral-700 to-neutral-900 dark:text-[#141414] text-gray-200 justify-center items-center"
         >
             {
                 navItems.map((link) => {
@@ -53,6 +54,87 @@ const navItems = [
                 })
             }
         </nav>
-        <ThemeToggle />
+
+        <!-- Menú hamburguesa móvil -->
+        <div class="md:hidden">
+            <button
+                id="menu-toggle"
+                class="flex items-center justify-center w-10 h-10 rounded-full bg-linear-to-tl dark:from-slate-400 dark:via-gray-300 dark:to-gray-400 from-neutral-700 to-neutral-900 dark:text-[#141414] text-gray-200"
+                aria-label="Toggle menu"
+            >
+                <MenuIcon id="hamburger-icon" />
+                <XIcon id="close-icon" />
+            </button>
+
+            <!-- Menú desplegable móvil -->
+            <nav
+                id="mobile-menu"
+                class="hidden absolute items-center top-14 right-0 z-20 w-full h-100 px-4 py-3 text-sm font-medium rounded-2xl bg-linear-to-tl dark:from-slate-400 dark:via-gray-300 dark:to-gray-400 from-neutral-700 to-neutral-900 dark:text-[#141414] text-gray-200 flex-col gap-1 min-w-[150px]"
+            >
+                {
+                    navItems.map((link) => {
+                        const Icon = link.icon;
+                        return (
+                            <a
+                                class="flex gap-2 w-full h-full items-center justify-center text-center px-5 py-2 rounded-lg transition hover:text-[#ff5d01] bg-black/30 dark:bg-white/10 duration-300"
+                                href={link.url}
+                            >
+                                <Icon class="w-4 h-4 drop-shadow-sm dark:drop-shadow-black/90 drop-shadow-white/50" />
+                                {link.title}
+                            </a>
+                        );
+                    })
+                }
+            </nav>
+        </div>
     </div>
+    <ThemeToggle />
 </header>
+
+<script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const hamburgerIcon = document.getElementById("hamburger-icon");
+    const closeIcon = document.getElementById("close-icon");
+
+    menuToggle?.addEventListener("click", () => {
+        const isHidden = mobileMenu?.classList.contains("hidden");
+
+        if (isHidden) {
+            mobileMenu?.classList.remove("hidden");
+            mobileMenu?.classList.add("flex");
+            hamburgerIcon?.classList.add("hidden");
+            closeIcon?.classList.remove("hidden");
+        } else {
+            mobileMenu?.classList.add("hidden");
+            mobileMenu?.classList.remove("flex");
+            hamburgerIcon?.classList.remove("hidden");
+            closeIcon?.classList.add("hidden");
+        }
+    });
+
+    // Cerrar menú al hacer click en un enlace
+    const mobileLinks = mobileMenu?.querySelectorAll("a");
+    mobileLinks?.forEach((link) => {
+        link.addEventListener("click", () => {
+            mobileMenu?.classList.add("hidden");
+            mobileMenu?.classList.remove("flex");
+            hamburgerIcon?.classList.remove("hidden");
+            closeIcon?.classList.add("hidden");
+        });
+    });
+
+    // Cerrar menú al hacer click fuera
+    document.addEventListener("click", (e) => {
+        const target = e.target as HTMLElement;
+        if (
+            !target.closest("#menu-toggle") &&
+            !target.closest("#mobile-menu")
+        ) {
+            mobileMenu?.classList.add("hidden");
+            mobileMenu?.classList.remove("flex");
+            hamburgerIcon?.classList.remove("hidden");
+            closeIcon?.classList.add("hidden");
+        }
+    });
+</script>

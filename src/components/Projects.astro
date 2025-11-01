@@ -12,6 +12,7 @@ import HtmlIcon from "../icons/skills/HtmlIcon.astro";
 import GodotIcon from "../icons/skills/GodotIcon.astro";
 import PythonIcon from "../icons/skills/PythonIcon.astro";
 import DecapIcon from "../icons/skills/DecapIcon.astro";
+import Card from "./Card.astro";
 
 const tags = {
     Astro: {
@@ -61,7 +62,7 @@ const projects = [
         title: "Notly",
         description:
             "A note-taking web application that allows users to create, edit, and organize their notes efficiently.",
-        link: "https://notly-app.web.app/",
+        link: "https://notly.alexaperador.dev/",
         github: "https://github.com/aaleex05/notly",
         image: "/projects/notly.webp",
         tags: [tags.NextJs, tags.Supabase, tags.TailwindCSS, tags.HTML],
@@ -101,10 +102,7 @@ const projects = [
     </div>
     {
         projects.map(({ title, description, tags, image, link, github }) => (
-            <article
-                class="w-full mx-auto lg:w-[850px] p-10 rounded-2xl border-b bg-black/20 dark:bg-black/10 border border-black/10 dark:border-white/10 
-                    shadow-xl"
-            >
+            <Card>
                 <h3 class="lg:text-3xl text-2xl font-semibold gradient-text mb-2">
                     {title}
                 </h3>
@@ -150,7 +148,7 @@ const projects = [
                         GitHub
                     </a>
                 </div>
-            </article>
+            </Card>
         ))
     }
 </div>

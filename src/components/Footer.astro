@@ -1,5 +1,32 @@
-<footer class="bg-black/20 dark:bg-black/10 border-t border-black/10 dark:border-white/10 py-4">
-    <div class="container mx-auto text-center text-sm text-gray-800 dark:text-gray-200">
-        &copy; {new Date().getFullYear()} Alex Aperador Salcedo.
-    </div>
+---
+import GitHubIcon from "../icons/GitHubIcon.astro";
+import LinkedInIcon from "../icons/LinkedInIcon.astro";
+
+const socialMedia = [
+    {
+        icon: GitHubIcon,
+        url: "https://github.com/alexaperador"
+    },
+    {
+        icon: LinkedInIcon,
+        url: "https://www.linkedin.com/in/alex-aperador/"
+    }
+]
+---
+
+<footer
+    class="bg-black/20 dark:bg-black/10 border-t border-black/10 dark:border-white/10 py-7 flex items-center justify-center text-[#141414] dark:text-gray-200 gap-4"
+>
+{
+    socialMedia.map(({ icon: Icon, url }) => (
+        <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="dark:text-gray-200 text-gray-800 hover:scale-110 duration-300"
+        >
+            <Icon class="w-6 h-6" />
+        </a>
+    ))
+}
 </footer>

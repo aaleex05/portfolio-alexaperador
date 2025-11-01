@@ -7,9 +7,12 @@ body {
     background-attachment: fixed;
 }
 
-html.dark body {
-    background: radial-gradient(125% 125% at 50% 90%, #141414 40%, #323233 100%);
-    background-attachment: fixed;
+html.dark body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(125% 125% at 50% 90%, #141414 40%, #323233 100%);
+  z-index: -1;
 }
 
 html.dark .gradient-text {
@@ -25,8 +28,7 @@ html.dark .gradient-text {
 .gradient-text {
     background: linear-gradient(to top left,
             #404040,
-            #171717
-        );
+            #171717);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

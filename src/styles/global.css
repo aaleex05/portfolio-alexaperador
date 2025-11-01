@@ -2,9 +2,12 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-body {
+body::before {
     background: radial-gradient(125% 125% at 50% 90%, #fff 40%, #475569 100%);
-    background-attachment: fixed;
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
 }
 
 html.dark body::before {

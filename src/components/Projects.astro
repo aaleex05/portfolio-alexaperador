@@ -13,6 +13,7 @@ import GodotIcon from "../icons/skills/GodotIcon.astro";
 import PythonIcon from "../icons/skills/PythonIcon.astro";
 import DecapIcon from "../icons/skills/DecapIcon.astro";
 import Card from "./Card.astro";
+import TypeScriptIcon from "../icons/skills/TypeScriptIcon.astro";
 
 const tags = {
     Astro: {
@@ -55,6 +56,11 @@ const tags = {
         class: "bg-[#7a2572] text-white inset-shadow-sm inset-shadow-pink-500/70",
         icon: DecapIcon,
     },
+    TypeScript: {
+        name: "TypeScript",
+        class: "bg-[#08386e] text-white inset-shadow-sm inset-shadow-blue-500/70",
+        icon: TypeScriptIcon,
+    }
 };
 
 const projects = [
@@ -65,7 +71,7 @@ const projects = [
         link: "https://notly.alexaperador.dev/",
         github: "https://github.com/aaleex05/notly",
         image: "/projects/notly.webp",
-        tags: [tags.NextJs, tags.Supabase, tags.TailwindCSS, tags.HTML],
+        tags: [tags.NextJs, tags.Supabase, tags.TailwindCSS, tags.HTML, tags.TypeScript],
     },
     {
         title: "Caedes:RE",

@@ -5,61 +5,89 @@ import TypeScriptIcon from "../icons/skills/TypeScriptIcon.astro";
 import NextjsIcon from "../icons/skills/NextjsIcon.astro";
 import SupabaseIcon from "../icons/skills/SupabaseIcon.astro";
 import AstroIcon from "../icons/skills/AstroIcon.astro";
+import AngularIcon from "../icons/skills/AngularIcon.astro";
 import WordpressIcon from "../icons/skills/WordpressIcon.astro";
 import HtmlIcon from "../icons/skills/HtmlIcon.astro";
 import TailwindIcon from "../icons/skills/TailwindIcon.astro";
 import GitIcon from "../icons/skills/GitIcon.astro";
+import SkillIcon from "../icons/SkillIcon.astro";
 
 const skills = [
-    {
-        text: "Flutter",
-        icon: FlutterIcon,
-    },
-    {
-        text: "TypeScript",
-        icon: TypeScriptIcon,
-    },
-    {
-        text: "Next.js",
-        icon: NextjsIcon,
-    },
-    {
-        text: "Supabase",
-        icon: SupabaseIcon,
-    },
-    {
-        text: "Astro",
-        icon: AstroIcon,
-    },
-    {
-        text: "WordPress",
-        icon: WordpressIcon,
-    },
-    {
-        text: "HTML",
-        icon: HtmlIcon,
-    },
-    {
-        text: "Tailwind CSS",
-        icon: TailwindIcon,
-    },
-    {
-        text: "Git",
-        icon: GitIcon,
-    },
+  {
+    text: "Flutter",
+    icon: FlutterIcon,
+  },
+  {
+    text: "Supabase",
+    icon: SupabaseIcon,
+  },
+  {
+    text: "Astro",
+    icon: AstroIcon,
+  },
+  {
+    text: "WordPress",
+    icon: WordpressIcon,
+  },
+  {
+    text: "HTML",
+    icon: HtmlIcon,
+  },
+  {
+    text: "Tailwind CSS",
+    icon: TailwindIcon,
+  },
+  {
+    text: "Git",
+    icon: GitIcon,
+  },
+];
+
+const skillsLearning = [
+  {
+    text: "Angular",
+    icon: AngularIcon,
+  },
+  {
+    text: "TypeScript",
+    icon: TypeScriptIcon,
+  },
 ];
 ---
 
-<div class="flex flex-wrap gap-7 justify-center">
+<div>
+  <div class="flex flex-wrap gap-7 justify-center">
     {
-        skills.map(({ icon: SkillIcon, text }) => (
-            <div class="flex flex-col items-center gap-2 font-medium bg-black/20  dark:bg-black/10 border border-black/10 dark:border-white/10 p-4 rounded-lg">
-                <span class="p-4 rounded-lg flex items-center justify-center">
-                    <SkillIcon class="w-18 h-18 z-1 hover:scale-110 transition-transform duration-300" />
-                    <SkillIcon class="absolute w-19 h-19 scale-105 blur-xs animate-pulse" />
-                </span>
-                <p class="gradient-text">{text}</p>
-            </div>
-        ))
+      skills.map(({ icon: SkillIcon, text }) => (
+        <div class="flex flex-col items-center gap-2 font-medium bg-black/20  dark:bg-black/10 border border-black/10 dark:border-white/10 p-4 rounded-lg">
+          <span class="p-4 rounded-lg flex items-center justify-center">
+            <SkillIcon class="w-18 h-18 z-1 hover:scale-110 transition-transform duration-300" />
+            <SkillIcon class="absolute w-19 h-19 scale-105 blur-xs animate-pulse" />
+          </span>
+          <p class="gradient-text">{text}</p>
+        </div>
+      ))
     }
+  </div>
+  <div class="flex items-center justify-center my-5">
+    <Badge text="Learning" icon={SkillIcon}/>
+    <Badge
+      text="Learning"
+      className="absolute blur-xs -z-1 animate-pulse"
+      icon={SkillIcon}
+    />
+  </div>
+  <div class="flex flex-wrap justify-center gap-7">
+    {
+      skillsLearning.map(({ icon: SkillIcon, text }) => (
+        <div class="flex flex-col items-center gap-2 font-medium bg-black/20  dark:bg-black/10 border border-black/10 dark:border-white/10 p-4 rounded-lg">
+          <span class="p-4 rounded-lg flex items-center justify-center">
+            <SkillIcon class="w-18 h-18 z-1 hover:scale-110 transition-transform duration-300" />
+            <SkillIcon class="absolute w-19 h-19 scale-105 blur-xs animate-pulse" />
+          </span>
+          <p class="gradient-text">{text}</p>
+        </div>
+      ))
+    }
+  </div>
 </div>
